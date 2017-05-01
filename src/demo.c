@@ -173,6 +173,7 @@ void demo(char *cfgfile, char *weightfile, float thresh, int cam_index, const ch
     while(1){
         ++count;
         if(1){
+            cvSetCaptureProperty(cap, CV_CAP_PROP_POS_MSEC, count*1000);
             if(pthread_create(&fetch_thread, 0, fetch_in_thread, 0)) error("Thread creation failed");
             if(pthread_create(&detect_thread, 0, detect_in_thread, 0)) error("Thread creation failed");
 
